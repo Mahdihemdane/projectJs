@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Cat App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTTP Cat App</h1>
+    <label for="statusCode">Enter HTTP Status Code:</label><br>
+    <input type="number" id="statusCode" name="statusCode" value="200"><br><br>
+
+    <button onclick="getCatImage()">Get Cat Image</button>
+
+    <div id="catImage"></div>
+
+    <script>
+        function getCatImage() {
+            const statusCode = document.getElementById('statusCode').value;
+
+            // Construct the URL with the provided status code
+            const apiUrl = `https://http.cat/${statusCode}`;
+
+            // Clear any previous cat image
+            document.getElementById('catImage').innerHTML = '';
+
+            // Create an img element to display the cat image
+            const img = document.createElement('img');
+            img.src = apiUrl;
+            img.alt = `HTTP Cat for status code ${statusCode}`;
+
+            // Append the image to the div
+            document.getElementById('catImage').appendChild(img);
+        }
+    </script>
+</body>
+</html>
